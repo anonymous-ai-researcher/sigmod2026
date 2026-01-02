@@ -5,8 +5,8 @@
 [![CUDA](https://img.shields.io/badge/CUDA-11.6%2B-green.svg)](https://developer.nvidia.com/cuda-toolkit)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-> **Learning to Reason over Neighborhoods: A Differentiable Guarded Logic Approach**  
-> *Under review at ICLR 2026*
+> **From Global Search to Local Lookup: Scalable Knowledge Base Completion via Differentiable Guarded Logic**  
+> *Under review at vldb 2026*
 
 This repository provides the official PyTorch implementation for **GUARDNET**. The code is designed to be a complete and faithful reproduction of the paper's methodology, enabling researchers to explore and build upon our work in scalable neuro-symbolic reasoning.
 
@@ -76,8 +76,6 @@ The datasets referenced in the paper include:
 - Gene Ontology (GO)
 - Yeast PPI
 - Human PPI
-- FB15k-237
-- WN18RR
 
 ### 📁 Required Data Structure
 
@@ -141,27 +139,6 @@ python evaluate.py \
 ```
 
 The evaluation follows the filtered ranking protocol described in the paper.
-
-
-### 🧪 Zero-Shot Multi-Hop Generalization
-
-This is a special evaluation task designed to rigorously test the model's ability to generalize to longer reasoning chains not seen during training.
-
-To run this evaluation, first generate the special data splits where the training set contains only 1- and 2-hop provable facts, and the test set contains only 3+ hop facts.
-```bash
-# Generate the multi-hop data splits
-python generate_multihop_splits.py \
-    --data_path data/your_dataset_name \
-    --output_path data/your_dataset_name_multihop
-
-# Train the model on the 1-2 hop training data
-python main.py
-
-# Evaluate the trained model on the 3+ hop test data
-python evaluate.py \
-    --model_path checkpoints/best_model.pt \
-    --data_path data/your_dataset_name_multihop
-```
 
 ---
 
