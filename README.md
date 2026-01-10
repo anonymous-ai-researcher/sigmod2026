@@ -12,6 +12,19 @@ This repository provides the official PyTorch implementation for **GUARDNET**. T
 
 ---
 
+## 📖 Extended Version & Supplementary Material
+
+> **📌 Note for Reviewers:** This repository contains the **extended version** of the paper with additional materials not included in the main submission due to page limits:
+> - **Appendix A**: Full proofs of Theorem 1 (Soundness) and Theorem 2 (Training Complexity)
+> - **Appendix B**: Detailed dataset statistics and hyperparameter search spaces
+> - **Appendix C**: Logic translation standards (DL → GF)
+> - **Appendix D**: Additional sensitivity analysis results
+> - **Appendix E**: Algorithm pseudocode
+>
+> Please refer to [`extended_paper.pdf`](extended_paper.pdf) for the complete technical details.
+
+---
+
 ## 📋 Overview
 
 **GUARDNET** is the first framework to leverage the **Guarded Fragment (GF)** of first-order logic (FOL) as a principled inductive bias for robust and scalable neighborhood-based reasoning. It directly addresses the critical scalability bottleneck in neural-symbolic systems, reducing memory complexity from $O(N^2)$ to $O(|\mathcal{E}|)$ and enabling rigorous FOL-based reasoning on knowledge bases with hundreds of thousands of entities.
