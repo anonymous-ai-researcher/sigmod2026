@@ -21,7 +21,7 @@ This repository provides the official PyTorch implementation for **GUARDNET**. T
 > - **Appendix D**: Parameter Sensitivity Analysis
 > - **Appendix E**: Algorithm pseudocode
 >
-> Please refer to [`extended_paper.pdf`](extended_paper.pdf) for the complete technical details.
+> Please refer to [`extended_paper.pdf`](extended_paper.zip) for the complete technical details.
 
 ---
 
