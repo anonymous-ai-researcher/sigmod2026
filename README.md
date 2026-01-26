@@ -63,7 +63,8 @@ pip install -r requirements.txt
 
 <details>
 <summary>📦 Full Dependency List</summary>
-```
+
+<pre>
 torch>=2.0.0
 numpy>=1.24.0
 pandas>=1.5.0
@@ -72,7 +73,7 @@ scikit-learn>=1.2.0
 tqdm>=4.65.0
 loguru>=0.7.0
 pyparsing>=3.0.9
-```
+</pre>
 
 </details>
 
