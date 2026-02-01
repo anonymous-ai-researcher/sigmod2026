@@ -6,7 +6,7 @@
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 > **From Global Search to Local Lookup: Scalable Knowledge Base Completion via Differentiable Guarded Logic**  
-> *Under review at VLDB 2026*
+> *Under review at SIGMOD 2026*
 
 This repository provides the official PyTorch implementation for **GUARDNET**. The code is designed to be a complete and faithful reproduction of the paper's methodology, enabling researchers to explore and build upon our work in scalable neuro-symbolic reasoning.
 
