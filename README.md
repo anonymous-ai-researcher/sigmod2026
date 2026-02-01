@@ -54,7 +54,7 @@ The framework is built entirely in Python. All experiments were conducted on ser
 ### Dependencies
 ```bash
 # Clone the repository
-git clone https://github.com/anonymous-ai-researcher/vldb2026.git
+git clone https://github.com/anonymous-ai-researcher/sigmod2026.git
 cd guardnet
 
 # Install Python dependencies
