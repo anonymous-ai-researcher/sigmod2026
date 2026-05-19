@@ -27,8 +27,8 @@ This repository provides the official PyTorch implementation for **GUARDNET**. T
 > - **Appendix C**: Logic Translation Standards
 > - **Appendix D**: Parameter Sensitivity Analysis
 > - **Appendix E**: Algorithm Pseudocode
->
-> Please refer to and download [`extended_paper.zip`](extended_paper.zip) for the complete technical details.
+> 
+> Please refer to [SIGMOD2027-ID271-Revision.pdf](SIGMOD2027-ID271-Revision.pdf) for the complete technical details.
 
 ---
 
