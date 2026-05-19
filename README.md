@@ -15,11 +15,18 @@ This repository provides the official PyTorch implementation for **GUARDNET**. T
 ## 📖 Extended Version & Supplementary Material
 
 > **📌 Note for Reviewers:** This repository contains the **extended version** of the paper with additional materials not included in the main submission due to page limits:
-> - **Appendix A**: Full proofs of Theorem 1 (Soundness) and Theorem 2 (Training Complexity)
-> - **Appendix B**: Detailed dataset statistics and hyperparameter search spaces
+> - **Appendix A**: Theoretical Proofs and Analysis
+>   - Summary of Notation
+>   - Formal Semantics of GF
+>   - Full Fuzzy Operator Comparison
+>   - Formal Definitions of Fuzzy Operators
+>   - Proof of Zero-Loss Semantic Consistency (Theorem 1)
+>   - Proof of Approximate Satisfaction (Corollary 1)
+>   - Proof of Training Complexity (Theorem 2)
+> - **Appendix B**: Detailed Experimental Setup (dataset statistics, hyperparameters, core domain growth analysis with $|\Delta_G|$ growth curves)
 > - **Appendix C**: Logic Translation Standards
 > - **Appendix D**: Parameter Sensitivity Analysis
-> - **Appendix E**: Algorithm pseudocode
+> - **Appendix E**: Algorithm Pseudocode
 >
 > Please refer to and download [`extended_paper.zip`](extended_paper.zip) for the complete technical details.
 
@@ -27,14 +34,16 @@ This repository provides the official PyTorch implementation for **GUARDNET**. T
 
 ## 📋 Overview
 
-**GUARDNET** is the first framework to leverage the **Guarded Fragment (GF)** of first-order logic (FOL) as a principled inductive bias for robust and scalable neighborhood-based reasoning. It directly addresses the critical scalability bottleneck in neural-symbolic systems, reducing memory complexity from $O(N^2)$ to $O(|\mathcal{E}|)$ and enabling rigorous FOL-based reasoning on knowledge bases with hundreds of thousands of entities.
+**GUARDNET** is the first framework to leverage the **Guarded Fragment (GF)** of first-order logic as a principled inductive bias for robust and scalable neighborhood-based reasoning. It directly addresses the critical scalability bottleneck in neural-symbolic (NeSy) systems, reducing grounding complexity from $O(N^2)$ to $O(|\mathcal{E}|)$ and enabling rigorous FOL-based reasoning on knowledge bases with hundreds of thousands of entities.
+
+The key insight is that the GF guard condition is precisely the syntactic constraint underlying **guarded tuple-generating dependencies (GTGDs)** from database theory. GUARDNET neuralizes this tractability mechanism, establishing a formal bridge between database-theoretic query answering and differentiable neural reasoning.
 
 ### 🎯 Key Features
 
-- **Guarded Logic as Inductive Bias**: Employs the syntactic 'guard' of GF to restrict logical quantification to local, relational neighborhoods, transforming intractable global search into efficient neighborhood-constrained lookups
-- **Principled Fuzzy Semantics**: Built on differentiable fuzzy logic using **Product t-norms** and **Sigmoidal Reichenbach implication** with smooth, non-vanishing gradients
-- **Hybrid Domain Strategy**: Novel training strategy combining **Core Domain** (Herbrand + Atom Witness + Guarded Witness) with **Latent Domain** for logical fidelity and robust generalization
-- **75× Scalability Improvement**: Scales linearly to 377K concepts where existing neural-symbolic methods fail at 5K entities
+- **Guarded Logic as Inductive Bias**: Employs the syntactic guard of GF to restrict logical quantification to local, relational neighborhoods, transforming intractable global grounding into efficient index-only lookups. This connects NeSy grounding to the DB-theoretic tractability of GTGDs.
+- **Principled Fuzzy Semantics**: Built on differentiable fuzzy logic using **Product t-norms** and **Sigmoidal Reichenbach implication** with smooth, non-vanishing gradients. A new Proposition (Soundness of Masked Guarded Evaluation) and Corollary (Approximate Satisfaction) provide formal guarantees.
+- **Hybrid Domain Strategy**: Novel training strategy combining **Core Domain** (Herbrand + Atom Witness + Guarded Witness) with **Latent Domain** for logical fidelity and robust generalization. Prevents representational collapse (vacuous satisfaction).
+- **75× Scalability Improvement**: Scales linearly to 377K concepts (SNOMED CT) where existing NeSy methods fail at 5K entities.
 
 ---
 
@@ -54,7 +63,7 @@ The framework is built entirely in Python. All experiments were conducted on ser
 ### Dependencies
 ```bash
 # Clone the repository
-git clone https://github.com/anonymous-ai-researcher/sigmod2026.git
+git clone https://anonymous.4open.science/r/sigmod2026-271/
 cd guardnet
 
 # Install Python dependencies
@@ -101,7 +110,7 @@ Please place your datasets inside a `data/` directory, following this structure 
 data/your_dataset_name/
 ├── entities.txt      # List of all entity/concept names, one per line
 ├── relations.txt     # List of all relation (predicate) names
-├── axioms.txt        # TBox axioms in GF format (e.g., ∀x(C(x)→D(x)))
+├── axioms.txt        # TBox axioms in GF format (e.g., ∀x(Pneumonia(x)→∃y(hasFinding(x,y)∧Fever(y))))
 ├── train.txt         # Training facts (head_entity relation tail_entity)
 ├── valid.txt         # Validation facts
 └── test.txt          # Test facts
